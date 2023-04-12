@@ -9,3 +9,7 @@ app.listen(PORT, () => {
 app.get("/products", (req, res, next) => {
 	res.json(["toys"]);
 });
+
+app.get("/user", (req, res, next) => {
+	res.json({ id: 1, name: "Guilherme" });
+});
