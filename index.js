@@ -1,6 +1,6 @@
 import express from "express";
 import cors from 'cors';
-const authMiddleware = require("./auth-middleware");
+import AuthMiddleware from './auth-middleware.js';
 
 const PORT = process.env.PORT || 3030;
 
@@ -11,14 +11,14 @@ app.listen(PORT, () => {
 	console.log(`Server running on port ${PORT}`);
 });
 
-app.use("/", authMiddleware);
+// app.use("/", authMiddleware);
 
-app.get("/products", (req, res) => {
-	console.log("Calling /products");
-	res.json(["toys"]);
+app.get("/hilary", (req, res) => {
+	console.log("Calling /hilary");
+	res.json({ name: "Hilary Braz Batista", gen: "👩🏽", birthDate: new Date(2002, 10, 4), });
 });
 
-app.get("/user", (req, res) => {
-	console.log("Calling /user");
-	res.json({ id: 1, name: "Guilherme" });
+app.get("/capitu", (req, res) => {
+	console.log("Calling /capitu");
+	res.json({ name: "Capitu Braz Batista", gen: "🐶", birthDate: "unknow", });
 });
