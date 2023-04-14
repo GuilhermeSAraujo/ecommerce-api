@@ -1,6 +1,10 @@
 import express from "express";
-import cors from 'cors';
-import AuthMiddleware from './auth-middleware.js';
+import cors from "cors";
+import { client } from "./db.js";
+
+import MongoDBProductRepository from "./src/Adapters/MongoDBProductRepository.js";
+import DefaultProductService from "./src/Application/DefaultProductService.js";
+import ProductsController from "./src/Controllers/ProductsController.js";
 
 const PORT = process.env.PORT || 3030;
 
@@ -11,14 +15,12 @@ app.listen(PORT, () => {
 	console.log(`Server running on port ${PORT}`);
 });
 
-// app.use("/", authMiddleware);
+const db = client.db("ecommerce");
+const productsCollection = db.collection("products");
+console.log(productsCollection.countDocuments());
+const productRepository = new MongoDBProductRepository(productsCollection);
+const productService = new DefaultProductService(productRepository);
+const productsController = new ProductsController(productService);
 
-app.get("/hilary", (req, res) => {
-	console.log("Calling /hilary");
-	res.json({ name: "Hilary Braz Batista", gen: "👩🏽", birthDate: new Date(2002, 10, 4), });
-});
-
-app.get("/capitu", (req, res) => {
-	console.log("Calling /capitu");
-	res.json({ name: "Capitu Braz Batista", gen: "🐶", birthDate: "unknow", });
-});
+app.get("/products", productsController.ListProducts.bind(productsController));
+app.post("/products", productsController.ListProducts.bind(productsController));
