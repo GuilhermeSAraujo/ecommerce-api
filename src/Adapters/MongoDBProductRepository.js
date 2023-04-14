@@ -1,6 +1,5 @@
 class MongoDBProductRepository {
 	constructor(productAdapter) {
-		console.log(productAdapter.collectionName);
 		this.ProductAdapter = productAdapter;
 	}
 
