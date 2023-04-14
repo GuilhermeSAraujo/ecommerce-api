@@ -10,7 +10,7 @@ https://ecommerce-api-zrsc.onrender.com
 Ex.: https://ecommerce-api-zrsc.onrender.com/products
 
 ### Database
-The database used was MongoDB Atlas, which is a cloud-based, free database service provided by MongoDB.
+The database used was MongoDB [Atlas](https://www.mongodb.com/atlas/database), which is a cloud-based, free database service provided by MongoDB.
 
 ### Authentication
 
