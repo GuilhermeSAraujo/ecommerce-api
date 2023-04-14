@@ -16,8 +16,9 @@ app.listen(PORT, () => {
 });
 
 const db = client.db("ecommerce");
+
 const productsCollection = db.collection("products");
-console.log(productsCollection.countDocuments());
+
 const productRepository = new MongoDBProductRepository(productsCollection);
 const productService = new DefaultProductService(productRepository);
 const productsController = new ProductsController(productService);
