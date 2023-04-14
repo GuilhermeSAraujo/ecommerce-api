@@ -6,6 +6,6 @@ https://ecommerce-api-zrsc.onrender.com
 
 Ex.: https://ecommerce-api-zrsc.onrender.com/products
 
-###Authentication
+### Authentication
 
 Currently, the authentication method via Firebase Authentication has not been implemented yet.
