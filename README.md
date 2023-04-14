@@ -9,6 +9,9 @@ https://ecommerce-api-zrsc.onrender.com
 
 Ex.: https://ecommerce-api-zrsc.onrender.com/products
 
+### Database
+The database used was MongoDB Atlas, which is a cloud-based, free database service provided by MongoDB.
+
 ### Authentication
 
 Currently, the authentication method via Firebase Authentication has not been implemented yet.
