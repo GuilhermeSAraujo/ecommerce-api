@@ -1,10 +1,12 @@
 import express from "express";
 import cors from "cors";
+import dotenv from 'dotenv';
 import { setupDepencies } from "./setup.js";
 import Middleware from "./src/Middleware/index.js";
 
 const PORT = process.env.PORT || 3030;
 
+dotenv.config();
 var app = express();
 app.use(cors());
 app.use(express.json());
