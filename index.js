@@ -1,10 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { client } from "./db.js";
-
-import MongoDBProductRepository from "./src/Adapters/MongoDBProductRepository.js";
-import DefaultProductService from "./src/Application/DefaultProductService.js";
-import ProductsController from "./src/Controllers/ProductsController.js";
+import { setupDepencies } from "./setup.js";
 
 const PORT = process.env.PORT || 3030;
 
@@ -16,13 +12,7 @@ app.listen(PORT, () => {
 	console.log(`Server running on port ${PORT}`);
 });
 
-const db = client.db("ecommerce");
+const controllers = setupDepencies();
 
-const productsCollection = db.collection("products");
-
-const productRepository = new MongoDBProductRepository(productsCollection);
-const productService = new DefaultProductService(productRepository);
-const productsController = new ProductsController(productService);
-
-app.get("/products", productsController.ListProducts.bind(productsController));
-app.post("/products", productsController.CreateProduct.bind(productsController));
+app.get("/products", controllers.productsController.ListProducts.bind(controllers.productsController));
+app.post("/products", controllers.productsController.CreateProduct.bind(controllers.productsController));
