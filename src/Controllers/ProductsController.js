@@ -4,10 +4,7 @@ class ProductsController {
 	}
 
 	async CreateProduct(req, res) {
-		const product = await this.ProductService.CreateProduct({
-			name: "Casinha",
-			category: "Pet",
-		});
+		const product = await this.ProductService.CreateProduct(req.body);
 		res.status(201).json(product);
 	}
 

@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 3030;
 
 var app = express();
 app.use(cors());
+app.use(express.json());
 
 app.listen(PORT, () => {
 	console.log(`Server running on port ${PORT}`);
@@ -24,4 +25,4 @@ const productService = new DefaultProductService(productRepository);
 const productsController = new ProductsController(productService);
 
 app.get("/products", productsController.ListProducts.bind(productsController));
-app.post("/products", productsController.ListProducts.bind(productsController));
+app.post("/products", productsController.CreateProduct.bind(productsController));
