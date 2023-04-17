@@ -1,4 +1,6 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
+import dotenv from "dotenv";
+dotenv.config();
 
 const uri = `mongodb+srv://ecommerce-app:${process.env.DB_PASSWORD}@cluster0.e0jmbnb.mongodb.net/?retryWrites=true&w=majority`;
 
