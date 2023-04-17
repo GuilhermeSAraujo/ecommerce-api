@@ -1,12 +1,16 @@
 import express from "express";
 import cors from "cors";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 import { setupDepencies } from "./setup.js";
 import Middleware from "./src/Middleware/index.js";
 
 const PORT = process.env.PORT || 3030;
 
 dotenv.config();
+console.log(
+	"process.env.SERVICE_ACCOUNT_PRIVATE_KEY: ",
+	process.env.SERVICE_ACCOUNT_PRIVATE_KEY
+);
 var app = express();
 app.use(cors());
 app.use(express.json());
@@ -18,5 +22,15 @@ app.listen(PORT, () => {
 
 const controllers = setupDepencies();
 
-app.get("/products", controllers.productsController.ListProducts.bind(controllers.productsController));
-app.post("/products", controllers.productsController.CreateProduct.bind(controllers.productsController));
+app.get(
+	"/products",
+	controllers.productsController.ListProducts.bind(
+		controllers.productsController
+	)
+);
+app.post(
+	"/products",
+	controllers.productsController.CreateProduct.bind(
+		controllers.productsController
+	)
+);
